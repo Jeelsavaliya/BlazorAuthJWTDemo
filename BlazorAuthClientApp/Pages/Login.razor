@@ -1,0 +1,42 @@
+﻿@page "/login"
+@* 
+
+<h3>Login</h3>
+
+<EditForm Model="@user" OnValidSubmit="@LoginSuccess">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText @bind-Value="user.Email" placeholder="Email" />
+    <InputText @bind-Value="user.Password" placeholder="Password" type="password" />
+
+    <button type="submit">Login</button>
+    
+</EditForm> *@
+
+
+
+<h2>Login</h2>
+
+<EditForm Model="@user" OnValidSubmit="@LoginSuccess">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="user.Email" />
+    </div>
+    <div>
+        <label>Password:</label>
+        <InputText @bind-Value="user.Password" type="password" />
+    </div>
+    <button type="submit">Login</button>
+</EditForm>
+
+
+
+@* <p>
+    Don't have an account? <button type="submit" @onclick="@GoToRegister">Register here</button>
+</p>
+ *@
+
