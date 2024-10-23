@@ -1,0 +1,86 @@
+﻿body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.2s;
+}
+
+    .login-form:hover {
+        transform: translateY(-2px);
+    }
+
+.form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    font-size: 14px;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+
+@media (max-width: 400px) {
+    .login-form {
+        width: 90%;
+    }
+}
+
+.error-message {
+    color: #d9534f; /* Bootstrap danger color */
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}

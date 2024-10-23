@@ -4,6 +4,7 @@ namespace BlazorAuthClientApp.Model
 {
     public class RegisterModel
     {
+        [Required]
         public string Name { get; set; } = string.Empty;
         [Required]
         [EmailAddress]

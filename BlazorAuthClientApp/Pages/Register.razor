@@ -1,42 +1,37 @@
-﻿@* @page "/register"
+﻿@page "/register"
 
-<h3>Register</h3>
+<h2 class="form-title">Register</h2>
 
-<EditForm Model="@user" >
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<EditForm Model="@user" OnValidSubmit="@RegisterSuccess" class="register-form">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    @* <ValidationSummary /> *@
 
-    <InputText @bind-Value="user.Name" placeholder="Name" /><br/>
-    <InputText @bind-Value="user.Email" placeholder="Email" /><br />
-    <InputText @bind-Value="user.Password" placeholder="Password" type="password" /><br />
-    <InputText @bind-Value="user.ConfirmPassword" placeholder="Password" type="ConfirmPassword" />
-
-    <button type="submit">Register</button>
-</EditForm> *@
-
-@page "/register"
-
-<h2>Register</h2>
-
-<EditForm Model="@user" OnValidSubmit="@RegisterSuccess">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div>
-        <label>Name:</label>
-        <InputText @bind-Value="user.Name" />
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <InputText id="name" @bind-Value="user.Name" class="form-control" />
+        <ValidationMessage For="@(() => user.Name)" />
     </div>
-    <div>
-        <label>Email:</label>
-        <InputText @bind-Value="user.Email" />
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="user.Email" class="form-control" />
+        <ValidationMessage For="@(() => user.Email)" />
     </div>
-    <div>
-        <label>Password:</label>
-        <InputText @bind-Value="user.Password" type="password" />
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="user.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => user.Password)" />
     </div>
-    <div>
-        <label>Confirm Password:</label>
-        <InputText @bind-Value="user.ConfirmPassword" type="password" />
+    <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <InputText id="confirmPassword" @bind-Value="user.ConfirmPassword" type="password" class="form-control" />
+        <ValidationMessage For="@(() => user.ConfirmPassword)" />
     </div>
-    <button type="submit">Register</button>
+    <button type="submit" class="btn-submit">Register</button>
 </EditForm>
+
 
