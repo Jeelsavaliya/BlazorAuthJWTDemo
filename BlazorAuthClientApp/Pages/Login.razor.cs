@@ -36,8 +36,6 @@ namespace BlazorAuthClientApp.Pages
                 navigationManager.NavigateTo("/home");
             }
         }
-
-
         private async Task LoginSuccess()
         {
             try

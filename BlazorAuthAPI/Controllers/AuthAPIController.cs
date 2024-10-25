@@ -1,7 +1,8 @@
-﻿using BlazorClass.Contracts;
-using BlazorClass.DTO;
+﻿using BlazorAuthAPI.Services;
+using BlazorAuthAPI.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static BlazorAuthAPI.DTO.ServiceResponseDto;
 
 namespace BlazorAuthAPI.Controllers
 {
@@ -16,14 +17,14 @@ namespace BlazorAuthAPI.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ServiceResponseDto.GeneralResponse> CreateAccount(UserDto userDto)
+        public async Task<GeneralResponse> CreateAccount(UserDto userDto)
         {
             var response = await _userAccount.CreateAccount(userDto);
             return response;
         }
 
         [HttpPost("login")]
-        public async Task<ServiceResponseDto.LoginResponse> LoginAccount(LoginDto loginDto)
+        public async Task<LoginResponse> LoginAccount(LoginDto loginDto)
         {
             var response = await _userAccount.LoginAccount(loginDto);
             return response;
