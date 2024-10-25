@@ -1,23 +1,22 @@
 ﻿using BlazorAPI.Data;
-using BlazorClass.Contracts;
-using BlazorClass.DTO;
+using BlazorAuthAPI.DTO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using static BlazorClass.DTO.ServiceResponseDto;
+using static BlazorAuthAPI.DTO.ServiceResponseDto;
 
-namespace BlazorAuthAPI.Repositories
+namespace BlazorAuthAPI.Services
 {
-    public class AccountRepository : IUserAccount
+    public class AccountService : IUserAccount
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _config;
 
-        public AccountRepository(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration config)
+        public AccountService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration config)
         {
             _userManager = userManager;
             _roleManager = roleManager;

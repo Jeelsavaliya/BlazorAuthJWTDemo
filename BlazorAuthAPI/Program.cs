@@ -1,7 +1,6 @@
 using BlazorAPI.Data;
 using BlazorAuthAPI.Data;
-using BlazorAuthAPI.Repositories;
-using BlazorClass.Contracts;
+using BlazorAuthAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +48,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+//For Blazor client access, to use this project api method
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
     builder.WithOrigins("*")
@@ -69,7 +69,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IUserAccount, AccountRepository>();
+builder.Services.AddScoped<IUserAccount, AccountService>();
 
 var app = builder.Build();
 

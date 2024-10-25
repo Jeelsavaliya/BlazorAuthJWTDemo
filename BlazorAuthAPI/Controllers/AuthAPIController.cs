@@ -1,8 +1,8 @@
-﻿using BlazorClass.Contracts;
-using BlazorClass.DTO;
+﻿using BlazorAuthAPI.Services;
+using BlazorAuthAPI.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static BlazorClass.DTO.ServiceResponseDto;
+using static BlazorAuthAPI.DTO.ServiceResponseDto;
 
 namespace BlazorAuthAPI.Controllers
 {
