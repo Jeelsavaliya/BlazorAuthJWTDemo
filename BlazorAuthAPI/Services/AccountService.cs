@@ -24,9 +24,10 @@ namespace BlazorAuthAPI.Services
         }
         public async Task<GeneralResponse> CreateAccount(UserDto userDto)
         {
-            if (userDto == null) 
+            if (userDto == null)
+            {
                 return new GeneralResponse(false, "Model is empty");
-            
+            }
 
             var newUser = new ApplicationUser()
             {
@@ -37,14 +38,17 @@ namespace BlazorAuthAPI.Services
             };
 
             var user = await _userManager.FindByEmailAsync(newUser.Email);
-            if (user != null) 
+            if (user != null)
+            {
                 return new GeneralResponse(false, "User Register Already");
-            
+            }
 
             var createUser = await _userManager.CreateAsync(newUser!, userDto.Password);
-            if(!createUser.Succeeded)
+            if (!createUser.Succeeded)
+            {
                 return new GeneralResponse(false, "Error occured...Please try again");
-            
+            }
+
             //Assign Role: Default first registr Admin, rest User
             var checkAdmin = await _roleManager.FindByNameAsync("Admin");
 
@@ -74,12 +78,16 @@ namespace BlazorAuthAPI.Services
             }
 
             var getUser = await _userManager.FindByEmailAsync(loginDto.Email);
-            if(getUser == null)
+            if (getUser == null)
+            {
                 return new LoginResponse(false, null!, "User not found");
+            }
 
             bool checkPassword = await _userManager.CheckPasswordAsync(getUser, loginDto.Password);
-            if(!checkPassword)
+            if (!checkPassword)
+            {
                 return new LoginResponse(false, null!, "Invalid email/Password");
+            }
 
             var getUserRole = await _userManager.GetRolesAsync(getUser);
             var userSession = new UserSessionDto(getUser.Id, getUser.Name, getUser.Email, getUserRole.First());
